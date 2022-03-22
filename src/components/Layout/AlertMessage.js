@@ -2,7 +2,7 @@ import { Alert } from 'react-bootstrap';
 
 const AlertMessage = ({ alert: { show, success, message } }) => {
   return (
-    <div className='d-flex justify-content-center'>
+    <div className='d-flex justify-content-center mb-3'>
       <Alert
         show={show}
         variant={success ? 'success' : 'danger'}

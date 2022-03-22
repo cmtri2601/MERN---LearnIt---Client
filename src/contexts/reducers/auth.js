@@ -5,15 +5,15 @@ const authReducer = (state, action) => {
   switch (type) {
     case LOAD_USER_SUCCESS:
       return {
-        ...state,
         isAuthenticated: true,
         isLoading: false,
         user: payload,
       };
     case LOAD_USER_FAILED:
       return {
-        ...state,
+        isAuthenticated: false,
         isLoading: false,
+        user: null,
       };
     default:
       return state;

@@ -12,10 +12,8 @@ const Auth = ({ auth }) => {
   } = useContext(AuthContext);
 
   let form;
-  if (auth === 'register') form = <RegisterForm />;
-  else if (auth === 'login') form = <LoginForm />;
 
-  if (isLoading) {
+  if (isLoading)
     form = (
       <div className='spinner'>
         <Spinner animation='border' role='status'>
@@ -23,9 +21,9 @@ const Auth = ({ auth }) => {
         </Spinner>
       </div>
     );
-  } else if (isAuthenticated) {
-    return <Navigate to='/dashboard' />;
-  }
+  else if (isAuthenticated) return <Navigate to='/dashboard' />;
+  else if (auth === 'register') form = <RegisterForm />;
+  else if (auth === 'login') form = <LoginForm />;
 
   return (
     <div className='auth'>

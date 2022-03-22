@@ -63,6 +63,12 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const logoutUser = async () => {
+    localStorage.removeItem('token');
+    addToken(null);
+    dispatch({ type: LOAD_USER_FAILED });
+  };
+
   useEffect(() => {
     loadUser();
   }, []);
@@ -71,6 +77,7 @@ const AuthContextProvider = ({ children }) => {
     authState,
     loginUser,
     registerUser,
+    logoutUser,
   };
 
   return (

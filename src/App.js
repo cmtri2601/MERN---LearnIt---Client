@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import Error from './pages/Error';
 import AuthContextProvider from './contexts/auth-context';
+import ProtectedRoute from './components/Routes/ProtectedRoute';
 
 import './App.css';
 
@@ -21,7 +22,10 @@ function App() {
           <Route path='/' element={<Navigate to='/dashboard' />} />
           <Route path='/register' element={<Auth auth='register' />} />
           <Route path='/login' element={<Auth auth='login' />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<ProtectedRoute />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/about' element={<About />} />
+          </Route>
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>
