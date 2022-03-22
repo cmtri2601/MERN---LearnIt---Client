@@ -1,38 +1,37 @@
-.App {
+.auth {
+  background-image: linear-gradient(
+      to right,
+      rgba(44, 44, 44, 0.8),
+      rgba(5, 5, 5, 0.9)
+    ),
+    url('./assets/background.jpg');
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  color: white;
+  padding-top: 25vh;
+}
+
+.auth * {
+  margin: 0;
+}
+
+.auth .title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.auth h1 {
+  font-size: 45px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.auth h3 {
+  font-size: 25px;
+}
+.spinner {
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth-form {
+  width: 350px;
+  margin: auto;
 }
