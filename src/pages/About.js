@@ -1,7 +1,20 @@
+import { Card } from 'react-bootstrap';
+
 const About = () => {
   return (
     <div>
-      <h1>ABOUT</h1>
+      <Card
+        className='m-auto mt-5'
+        style={{ width: '400px', textAlign: 'center', fontWeight: 'bolder' }}
+      >
+        <Card.Body>
+          Click{' '}
+          <a href='https://www.youtube.com/' target='_blank'>
+            here
+          </a>{' '}
+          to find more course
+        </Card.Body>
+      </Card>
     </div>
   );
 };

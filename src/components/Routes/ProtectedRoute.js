@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 
+import PostContextProvider from '../../contexts/post-context';
 import { AuthContext } from '../../contexts/auth-context';
 import NavbarMenu from '../Layout/NavbarMenu';
 
@@ -12,10 +13,10 @@ const ProtectedRoute = () => {
   if (!isAuthenticated) return <Navigate to='/login' />;
 
   return (
-    <>
+    <PostContextProvider>
       <NavbarMenu />
       <Outlet />
-    </>
+    </PostContextProvider>
   );
 };
 

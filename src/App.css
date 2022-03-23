@@ -35,3 +35,31 @@
   width: 350px;
   margin: auto;
 }
+
+.overflow {
+  height: 70px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.add-course-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.tooltip {
+  background: transparent;
+}
+
+.tooltip .arrow::before {
+  border-left-color: #253852;
+}
+
+.tooltip-inner {
+  background: #253852;
+}
