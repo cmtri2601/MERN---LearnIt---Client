@@ -2,7 +2,7 @@ import { Card, Badge } from 'react-bootstrap';
 
 import ActionButtons from './ActionButtons';
 
-const SinglePost = ({ post: { title, description, status, url } }) => {
+const SinglePost = ({ post: { title, description, status, url, _id } }) => {
   const theme =
     status === 'TO LEARN'
       ? 'info'
@@ -13,7 +13,7 @@ const SinglePost = ({ post: { title, description, status, url } }) => {
   return (
     <Card border={theme}>
       <Card.Header className='d-flex justify-content-end'>
-        <ActionButtons url={url} />
+        <ActionButtons url={url} _id={_id} />
       </Card.Header>
       <Card.Body className='text-center'>
         <Card.Title>{title}</Card.Title>

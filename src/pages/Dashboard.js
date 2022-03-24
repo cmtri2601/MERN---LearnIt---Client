@@ -5,11 +5,13 @@ import addIcon from '../assets/add.svg';
 
 import { PostContext } from '../contexts/post-context';
 import ListPost from '../components/Post/ListPost';
+import AddPostModal from '../components/Post/AddPostModal';
+import UpdatePostModal from '../components/Post/UpdatePostModal';
 
 const Dashboard = () => {
   const {
-    postState: { posts, isLoadingPost },
-    getPosts,
+    postState: { posts },
+    setShowAddModal,
   } = useContext(PostContext);
 
   let content;
@@ -25,27 +27,41 @@ const Dashboard = () => {
             You haven't have any course. Click button below to add some
             interesting courses!
           </Card.Text>
-          <Button variant='primary'>Add course</Button>
+          <Button variant='primary' onClick={setShowAddModal.bind(this, true)}>
+            Add course
+          </Button>
         </Card.Body>
       </Card>
     );
   } else {
-    content = <ListPost posts={posts} />;
+    content = (
+      <>
+        <ListPost posts={posts} />
+
+        <OverlayTrigger
+          placement='left'
+          overlay={
+            <Tooltip className='tooltip'>Click here to add course</Tooltip>
+          }
+        >
+          <Button
+            className='add-course-button'
+            variant='light'
+            onClick={setShowAddModal.bind(this, true)}
+          >
+            <img alt='Add icon' src={addIcon} height={50} width={50} />
+          </Button>
+        </OverlayTrigger>
+      </>
+    );
   }
 
   return (
     <>
       {content}
-      <OverlayTrigger
-        placement='left'
-        overlay={
-          <Tooltip className='tooltip'>Click here to add course</Tooltip>
-        }
-      >
-        <Button className='add-course-button' variant='light'>
-          <img src={addIcon} height={50} width={50} />
-        </Button>
-      </OverlayTrigger>
+
+      <AddPostModal />
+      <UpdatePostModal />
     </>
   );
 };

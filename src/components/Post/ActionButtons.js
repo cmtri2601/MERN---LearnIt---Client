@@ -1,10 +1,29 @@
+import { useContext } from 'react';
 import { Button } from 'react-bootstrap';
+
+import { PostContext } from '../../contexts/post-context';
 
 import playIcon from '../../assets/play.svg';
 import editIcon from '../../assets/edit.svg';
 import deleteIcon from '../../assets/delete.svg';
 
-const ActionButtons = ({ url }) => {
+const ActionButtons = ({ url, _id }) => {
+  const {
+    postState: { posts },
+    deletePost,
+    setShowUpdateModal,
+    setCurrentUpdateCourse,
+  } = useContext(PostContext);
+
+  const updateHandler = () => {
+    setCurrentUpdateCourse(posts.find(course => course._id === _id));
+    setShowUpdateModal(true);
+  };
+
+  const deleteHandler = async () => {
+    const { success, message } = deletePost(_id);
+  };
+
   return (
     <>
       <Button
@@ -25,6 +44,7 @@ const ActionButtons = ({ url }) => {
       <Button
         variant='light'
         className='py-0 px-1 me-1 border-3 border-warning'
+        onClick={updateHandler}
       >
         <img
           alt='edit'
@@ -35,7 +55,11 @@ const ActionButtons = ({ url }) => {
         />
       </Button>
 
-      <Button variant='light' className='py-0 px-1 border-3 border-danger'>
+      <Button
+        variant='light'
+        className='py-0 px-1 border-3 border-danger'
+        onClick={deleteHandler}
+      >
         <img
           alt='delete'
           src={deleteIcon}
