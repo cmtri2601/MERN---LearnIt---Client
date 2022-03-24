@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Card, Button, OverlayTrigger, Tooltip, Toast } from 'react-bootstrap';
 
 import addIcon from '../assets/add.svg';
 
@@ -12,9 +12,12 @@ const Dashboard = () => {
   const {
     postState: { posts },
     setShowAddModal,
+    showToast,
+    setShowToast,
   } = useContext(PostContext);
 
   let content;
+
   if (posts.length === 0) {
     content = (
       <Card
@@ -56,10 +59,23 @@ const Dashboard = () => {
     );
   }
 
+  const toast = (
+    <Toast
+      className={`bg-${showToast.success ? 'success' : 'danger'} text-white`}
+      style={{ position: 'fixed', top: '10%', right: '10px', width: '20%' }}
+      onClose={() => setShowToast({ show: false, success: null, message: '' })}
+      show={showToast.show}
+      delay={3000}
+      autohide
+    >
+      <Toast.Body>{showToast.message}</Toast.Body>
+    </Toast>
+  );
+
   return (
     <>
       {content}
-
+      {toast}
       <AddPostModal />
       <UpdatePostModal />
     </>

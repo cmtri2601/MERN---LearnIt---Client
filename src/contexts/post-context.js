@@ -21,6 +21,11 @@ const PostContextProvider = ({ children }) => {
     url: '',
     status: '',
   });
+  const [showToast, setShowToast] = useState({
+    show: false,
+    success: null,
+    message: '',
+  });
 
   const initialPostState = {
     posts: [],
@@ -107,6 +112,8 @@ const PostContextProvider = ({ children }) => {
     setShowUpdateModal,
     currentUpdateCourse,
     setCurrentUpdateCourse,
+    showToast,
+    setShowToast,
   };
 
   return (

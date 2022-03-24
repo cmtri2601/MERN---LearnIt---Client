@@ -13,6 +13,7 @@ const ActionButtons = ({ url, _id }) => {
     deletePost,
     setShowUpdateModal,
     setCurrentUpdateCourse,
+    setShowToast,
   } = useContext(PostContext);
 
   const updateHandler = () => {
@@ -21,7 +22,8 @@ const ActionButtons = ({ url, _id }) => {
   };
 
   const deleteHandler = async () => {
-    const { success, message } = deletePost(_id);
+    const { success, message } = await deletePost(_id);
+    setShowToast({ show: true, success, message });
   };
 
   return (

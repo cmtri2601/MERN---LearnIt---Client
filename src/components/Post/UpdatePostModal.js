@@ -10,6 +10,7 @@ const UpdatePostModal = () => {
     updatePost,
     currentUpdateCourse,
     setCurrentUpdateCourse,
+    setShowToast,
   } = useContext(PostContext);
 
   const [validated, setValidated] = useState(false);
@@ -44,6 +45,7 @@ const UpdatePostModal = () => {
       currentUpdateCourse._id,
       currentUpdateCourse
     );
+    setShowToast({ show: true, success, message });
     handleClose();
   };
 

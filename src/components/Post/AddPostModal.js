@@ -4,7 +4,8 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { PostContext } from '../../contexts/post-context';
 
 const AddPostModal = () => {
-  const { showAddModal, setShowAddModal, addPost } = useContext(PostContext);
+  const { showAddModal, setShowAddModal, addPost, setShowToast } =
+    useContext(PostContext);
 
   const [course, setCourse] = useState({
     title: '',
@@ -36,6 +37,7 @@ const AddPostModal = () => {
       return;
     }
     const { success, message } = await addPost(course);
+    setShowToast({ show: true, success, message });
     handleClose();
   };
 

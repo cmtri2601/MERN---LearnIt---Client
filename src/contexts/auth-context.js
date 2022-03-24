@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 
 import authReducer from './reducers/auth';
@@ -9,6 +9,12 @@ import { apiUrl, LOAD_USER_SUCCESS, LOAD_USER_FAILED } from './constant';
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
+  const [showToast, setShowToast] = useState({
+    show: false,
+    success: null,
+    message: '',
+  });
+
   const initialAuthState = {
     isAuthenticated: false,
     isLoading: true,
@@ -78,6 +84,8 @@ const AuthContextProvider = ({ children }) => {
     loginUser,
     registerUser,
     logoutUser,
+    showToast,
+    setShowToast,
   };
 
   return (

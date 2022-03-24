@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/auth-context';
 import AlertMessage from '../Layout/AlertMessage';
 
 const RegiserForm = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, setShowToast } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [registerForm, setRegisterForm] = useState({
@@ -56,6 +56,11 @@ const RegiserForm = () => {
       return;
     } else if (registerData.success) {
       navigate('/login');
+      setShowToast({
+        show: true,
+        success: true,
+        message: 'Register succesfully. Using your account to login',
+      });
     }
   };
 
