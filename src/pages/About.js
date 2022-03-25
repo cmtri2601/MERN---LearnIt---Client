@@ -12,7 +12,7 @@ const About = () => {
           <a href='https://www.youtube.com/' target='_blank'>
             here
           </a>{' '}
-          to find more course
+          to find more interesting course
         </Card.Body>
       </Card>
     </div>
